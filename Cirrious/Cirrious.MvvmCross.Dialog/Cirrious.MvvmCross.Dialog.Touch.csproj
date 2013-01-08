@@ -9,97 +9,83 @@
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>Cirrious.MvvmCross.Dialog.Touch</RootNamespace>
+    <AssemblyName>Cirrious.MvvmCross.Dialog.Touch</AssemblyName>
+    <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>True</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>False</ConsolePause>
-    <NoStdLib>True</NoStdLib>
-    <AssemblyName>Cirrious.MvvmCross.Dialog.Touch</AssemblyName>
+    <ConsolePause>false</ConsolePause>
+    <NoStdLib>true</NoStdLib>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\Release</OutputPath>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>False</ConsolePause>
-    <AssemblyName>Cirrious.MvvmCross.Dialog.Touch</AssemblyName>
+    <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
-    <DebugSymbols>True</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\iPhoneSimulator\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>False</ConsolePause>
-    <MtouchDebug>True</MtouchDebug>
-    <MtouchProfiling>True</MtouchProfiling>
+    <ConsolePause>false</ConsolePause>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchProfiling>true</MtouchProfiling>
     <MtouchLink>None</MtouchLink>
-    <AssemblyName>Cirrious.MvvmCross.Dialog.Touch</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\iPhoneSimulator\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>False</ConsolePause>
+    <ConsolePause>false</ConsolePause>
     <MtouchLink>None</MtouchLink>
-    <AssemblyName>Cirrious.MvvmCross.Dialog.Touch</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AdHoc|iPhone' ">
     <DebugType>none</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\iPhone\AdHoc</OutputPath>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\iPhone\AdHoc</OutputPath>
     <WarningLevel>4</WarningLevel>
     <CodesignKey>iPhone Developer</CodesignKey>
     <DefineConstants>MONOTOUCH</DefineConstants>
-    <AssemblyName>Cirrious.MvvmCross.Dialog.Touch</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|iPhone'">
-    <OutputPath>bin\iPhone\Debug\</OutputPath>
+    <OutputPath>..\..\bin\iPhone\Debug\</OutputPath>
     <DebugType>none</DebugType>
     <WarningLevel>4</WarningLevel>
-    <Optimize>False</Optimize>
-    <NoStdLib>True</NoStdLib>
-    <AssemblyName>Cirrious.MvvmCross.Dialog.Touch</AssemblyName>
+    <Optimize>false</Optimize>
+    <NoStdLib>true</NoStdLib>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|iPhone'">
-    <OutputPath>bin\iPhone\Release\</OutputPath>
+    <OutputPath>..\..\bin\iPhone\Release\</OutputPath>
     <DebugType>none</DebugType>
     <WarningLevel>4</WarningLevel>
-    <Optimize>False</Optimize>
-    <AssemblyName>Cirrious.MvvmCross.Dialog.Touch</AssemblyName>
+    <Optimize>false</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AdHoc|AnyCPU' ">
     <DebugType>none</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\AdHoc</OutputPath>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\AdHoc</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <AssemblyName>Cirrious.MvvmCross.Dialog.Touch</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AdHoc|iPhoneSimulator' ">
     <DebugType>none</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\AdHoc</OutputPath>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\AdHoc</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <AssemblyName>Cirrious.MvvmCross.Dialog.Touch</AssemblyName>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Distribution|iPhone' ">
-    <DebugType>none</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\iPhone\Distribution</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <AssemblyName>CirriousMvvmCrossDialogTouch</AssemblyName>
-    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="monotouch">
@@ -112,6 +98,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Compile Include="Dialog\DialogViewController.cs" />
+    <Compile Include="Dialog\Elements\PickerElement.cs" />
     <Compile Include="Dialog\Elements\MessageSummaryView.cs" />
     <Compile Include="Dialog\Elements\BaseBooleanImageElement.cs" />
     <Compile Include="Dialog\Elements\BooleanElement.cs" />
@@ -177,6 +164,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Dialog\Images\arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Dialog\NoteAndLicense.MonoTouch.Dialog.txt" />
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -186,7 +176,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <EmbeddedResource Include="Dialog\Images\arrow.png" />
-  </ItemGroup>
 </Project>

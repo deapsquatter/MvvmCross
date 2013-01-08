@@ -13,6 +13,8 @@ using System.Collections;
 using Android.Content;
 using Android.Util;
 using Android.Widget;
+using Cirrious.MvvmCross.Binding.Attributes;
+using Cirrious.MvvmCross.Binding.Bindings.Target;
 using Cirrious.MvvmCross.Interfaces.Commands;
 
 namespace Cirrious.MvvmCross.Binding.Android.Views
@@ -53,7 +55,7 @@ namespace Cirrious.MvvmCross.Binding.Android.Views
             }
         }
 
-
+        [MvxSetToNullAfterBinding]
         public IList ItemsSource
         {
             get { return Adapter.ItemsSource; }
@@ -74,17 +76,14 @@ namespace Cirrious.MvvmCross.Binding.Android.Views
                                   {
                                       if (this.ItemClick == null)
                                           return;
-                                      var item = Adapter.GetItem(args.Position) as MvxJavaContainer;
+                                      var item = Adapter.GetRawItem(args.Position);
                                       if (item == null)
                                           return;
 
-                                      if (item.Object == null)
+                                      if (!this.ItemClick.CanExecute(item))
                                           return;
 
-                                      if (!this.ItemClick.CanExecute(item.Object))
-                                          return;
-
-                                      this.ItemClick.Execute(item.Object);
+                                      this.ItemClick.Execute(item);
                                   };
         }
     }

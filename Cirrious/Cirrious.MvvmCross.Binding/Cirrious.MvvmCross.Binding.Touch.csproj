@@ -9,71 +9,60 @@
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>Cirrious.MvvmCross.Binding</RootNamespace>
+    <AssemblyName>Cirrious.MvvmCross.Binding.Touch</AssemblyName>
+    <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
-    <DebugSymbols>True</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\iPhoneSimulator\Debug</OutputPath>
     <DefineConstants>DEBUG;MONOTOUCH</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>False</ConsolePause>
-    <MtouchDebug>True</MtouchDebug>
-    <MtouchProfiling>True</MtouchProfiling>
+    <ConsolePause>false</ConsolePause>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchProfiling>true</MtouchProfiling>
     <MtouchLink>None</MtouchLink>
-    <NoStdLib>True</NoStdLib>
-    <AssemblyName>Cirrious.MvvmCross.Binding.Touch</AssemblyName>
+    <NoStdLib>true</NoStdLib>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\iPhoneSimulator\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>False</ConsolePause>
+    <ConsolePause>false</ConsolePause>
     <MtouchLink>None</MtouchLink>
     <DefineConstants>MONOTOUCH</DefineConstants>
-    <AssemblyName>Cirrious.MvvmCross.Binding.Touch</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AdHoc|iPhone' ">
     <DebugType>none</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\iPhone\AdHoc</OutputPath>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\iPhone\AdHoc</OutputPath>
     <WarningLevel>4</WarningLevel>
     <CodesignKey>iPhone Developer</CodesignKey>
     <DefineConstants>MONOTOUCH</DefineConstants>
-    <AssemblyName>Cirrious.MvvmCross.Binding.Touch</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|iPhone'">
-    <OutputPath>bin\iPhone\Debug\</OutputPath>
+    <OutputPath>..\..\bin\iPhone\Debug\</OutputPath>
     <DebugType>none</DebugType>
     <WarningLevel>4</WarningLevel>
-    <Optimize>False</Optimize>
-    <NoStdLib>True</NoStdLib>
-    <AssemblyName>Cirrious.MvvmCross.Binding.Touch</AssemblyName>
+    <Optimize>false</Optimize>
+    <NoStdLib>true</NoStdLib>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|iPhone'">
-    <OutputPath>bin\iPhone\Release\</OutputPath>
+    <OutputPath>..\..\bin\iPhone\Release\</OutputPath>
     <DebugType>none</DebugType>
     <WarningLevel>4</WarningLevel>
-    <Optimize>False</Optimize>
-    <AssemblyName>Cirrious.MvvmCross.Binding.Touch</AssemblyName>
+    <Optimize>false</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AdHoc|iPhoneSimulator' ">
     <DebugType>none</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\AdHoc</OutputPath>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\AdHoc</OutputPath>
     <WarningLevel>4</WarningLevel>
-    <AssemblyName>Cirrious.MvvmCross.Binding.Touch</AssemblyName>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Distribution|iPhone' ">
-    <DebugType>none</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\iPhone\Distribution</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <AssemblyName>CirriousMvvmCrossBindingTouch</AssemblyName>
-    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="monotouch">
@@ -85,6 +74,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <Compile Include="Attributes\MvxSetToNullAfterBindingAttribute.cs" />
     <Compile Include="Binders\Json\MvxJsonBindingDescription.cs" />
     <Compile Include="Binders\Json\MvxJsonBindingDescriptionParser.cs" />
     <Compile Include="Binders\Json\MvxJsonBindingParser.cs" />
@@ -110,6 +100,7 @@
     <Compile Include="Bindings\Target\MvxEventInfoTargetBinding.cs" />
     <Compile Include="Bindings\Target\MvxNullTargetBinding.cs" />
     <Compile Include="Bindings\Target\MvxPropertyInfoTargetBinding.cs" />
+    <Compile Include="ExtensionMethods\MvxTypeExtensions.cs" />
     <Compile Include="Interfaces\Binders\IMvxBindingDescriptionParser.cs" />
     <Compile Include="Interfaces\Binders\IMvxValueConverterProvider.cs" />
     <Compile Include="Interfaces\Binders\IMvxValueConverterRegistry.cs" />
@@ -134,6 +125,7 @@
     <Compile Include="Touch\Interfaces\Views\IMvxBindableView.cs" />
     <Compile Include="Touch\Interfaces\IMvxBindingTouchView.cs" />
     <Compile Include="Touch\Target\MvxUISwitchOnTargetBinding.cs" />
+    <Compile Include="Touch\Views\MvxBindingTouchTabBarViewController.cs" />
     <Compile Include="Touch\Views\MvxBaseBindableTableViewSource.cs" />
     <Compile Include="Touch\Views\MvxBindableTableViewCell.cs" />
     <Compile Include="Touch\Views\MvxBindableTableViewDelegate.cs" />
