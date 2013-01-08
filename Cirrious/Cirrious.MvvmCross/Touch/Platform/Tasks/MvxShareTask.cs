@@ -36,9 +36,21 @@ namespace Cirrious.MvvmCross.Touch.Platform.Tasks
 
             _tweet = new TWTweetComposeViewController();
             _tweet.SetInitialText(message);
-            _tweet.SetCompletionHandler(TWTweetComposeHandler);
+            //_tweet.SetCompletionHandler(TWTweetComposeHandler);
             _presenter.PresentModalViewController(_tweet, true);
         }
+
+		public void ShareShort(string message, byte[] image)
+		{
+			if (!TWTweetComposeViewController.CanSendTweet)
+				return;
+			
+			_tweet = new TWTweetComposeViewController();
+			_tweet.SetInitialText(message);
+			_tweet.AddImage(UIImage.LoadFromData(NSData.FromArray(image)));
+			//_tweet.SetCompletionHandler(TWTweetComposeHandler);
+			_presenter.PresentModalViewController(_tweet, true);
+		}
 
         public void ShareLink(string title, string message, string link)
         {
@@ -48,14 +60,14 @@ namespace Cirrious.MvvmCross.Touch.Platform.Tasks
             _tweet = new TWTweetComposeViewController();
             _tweet.SetInitialText(title + " " + message);
             _tweet.AddUrl(new NSUrl(link));
-            _tweet.SetCompletionHandler(TWTweetComposeHandler);
+            //_tweet.SetCompletionHandler(TWTweetComposeHandler);
             _presenter.PresentModalViewController(_tweet, true);
         }
 
-        private void TWTweetComposeHandler(TWTweetComposeViewControllerResult result)
-        {
-            _presenter.NativeModalViewControllerDisappearedOnItsOwn();
-            _tweet = null;
-        }
+//        private void TWTweetComposeHandler(TWTweetComposeViewControllerResult result)
+//        {
+//            _presenter.NativeModalViewControllerDisappearedOnItsOwn();
+//            _tweet = null;
+//        }
     }
 }

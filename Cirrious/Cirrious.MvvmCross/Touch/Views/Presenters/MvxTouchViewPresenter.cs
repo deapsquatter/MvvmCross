@@ -124,6 +124,7 @@ namespace Cirrious.MvvmCross.Touch.Views.Presenters
 
             OnMasterNavigationControllerCreated();
 
+			_window.RootViewController = _masterNavigationController;
             _window.AddSubview(_masterNavigationController.View);
         }
         

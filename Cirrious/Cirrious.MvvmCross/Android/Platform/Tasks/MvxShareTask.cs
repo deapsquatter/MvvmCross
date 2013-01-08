@@ -38,6 +38,11 @@ namespace Cirrious.MvvmCross.Android.Platform.Tasks
             StartActivity(shareIntent);
         }
 
+		public void ShareShort(string message, byte[] image)
+		{
+			
+		}
+
         public void ShareLink(string title, string message, string link)
         {
             var shareIntent = new Intent(global::Android.Content.Intent.ActionSend);

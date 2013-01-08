@@ -51,5 +51,10 @@ namespace Cirrious.MvvmCross.Android.Platform.Tasks
 
             StartActivity(emailIntent);
         }
+
+		public void ComposeEmail(string to, string cc, string subject, string body, bool isHtml, byte[] attachment)
+		{
+
+		}
     }
 }

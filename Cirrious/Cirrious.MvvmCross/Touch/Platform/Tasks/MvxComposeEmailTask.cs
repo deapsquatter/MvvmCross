@@ -44,6 +44,23 @@ namespace Cirrious.MvvmCross.Touch.Platform.Tasks
             _presenter.PresentModalViewController(_mail, true);
         }
 
+		public void ComposeEmail(string to, string cc, string subject, string body, bool isHtml, byte[] attachment)
+		{
+			
+			if (!MFMailComposeViewController.CanSendMail)
+				return;
+			
+			_mail = new MFMailComposeViewController ();
+			_mail.SetMessageBody (body ?? string.Empty, isHtml);
+			_mail.SetSubject(subject ?? string.Empty);
+			_mail.SetCcRecipients(new [] {cc ?? string.Empty});
+			_mail.SetToRecipients(new [] {to ?? string.Empty});
+			_mail.AddAttachmentData(NSData.FromArray(attachment), "image/jpeg", "screenshot.jpg");
+			_mail.Finished += HandleMailFinished;
+			
+			_presenter.PresentModalViewController(_mail, true);
+		}
+
         private void HandleMailFinished(object sender, MFComposeResultEventArgs e)
         {
 			(sender as UIViewController).DismissViewController(true, () => {});

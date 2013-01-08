@@ -96,6 +96,7 @@ namespace Cirrious.MvvmCross.Dialog.Touch.Dialog.Elements
             {
                 View = new MessageSummaryView();
                 ContentView.Add(View);
+				ContentView.BackgroundColor = UIColor.Clear;
                 Accessory = UITableViewCellAccessory.DisclosureIndicator;
             }
 
@@ -107,8 +108,8 @@ namespace Cirrious.MvvmCross.Dialog.Touch.Dialog.Elements
             public override void LayoutSubviews()
             {
                 base.LayoutSubviews();
-                View.Frame = ContentView.Bounds;
-                View.SetNeedsDisplay();
+				View.Frame = ContentView.Bounds;
+				View.SetNeedsDisplay();
             }
         }
 

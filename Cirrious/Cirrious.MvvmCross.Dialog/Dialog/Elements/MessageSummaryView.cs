@@ -84,7 +84,7 @@ namespace Cirrious.MvvmCross.Dialog.Touch.Dialog.Elements
         public MessageSummaryView ()
         {
 #warning Virtual method call in constructor
-            BackgroundColor = UIColor.White;
+            BackgroundColor = UIColor.Clear;
         }
         
         public void Update (string sender, string body, string subject, DateTime date, bool newFlag, int messageCount)
