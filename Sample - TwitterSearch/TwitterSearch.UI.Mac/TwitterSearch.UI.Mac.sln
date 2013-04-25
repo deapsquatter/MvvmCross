@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterSearch.UI.Mac", "TwitterSearch.UI.Mac.csproj", "{D1794E47-D612-4E48-BE2B-6CE437C26495}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		AppStore|iPhoneSimulator = AppStore|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1794E47-D612-4E48-BE2B-6CE437C26495}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhoneSimulator
+		{D1794E47-D612-4E48-BE2B-6CE437C26495}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
+		{D1794E47-D612-4E48-BE2B-6CE437C26495}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{D1794E47-D612-4E48-BE2B-6CE437C26495}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{D1794E47-D612-4E48-BE2B-6CE437C26495}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{D1794E47-D612-4E48-BE2B-6CE437C26495}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = TwitterSearch.UI.Mac.csproj
+	EndGlobalSection
+EndGlobal

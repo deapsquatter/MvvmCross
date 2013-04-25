@@ -58,21 +58,9 @@
     <Compile Include="MvxDialogViewControllerBinderExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CrossUI\CrossUI.Core\CrossUI.Core.csproj">
-      <Project>{D9CBBFFE-57E8-4E97-9E16-C34BC4C52827}</Project>
-      <Name>CrossUI.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\CrossUI\CrossUI.Touch\CrossUI.Touch.csproj">
       <Project>{371B2408-732A-40CA-8242-70DBC17F9825}</Project>
       <Name>CrossUI.Touch</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CrossCore\Cirrious.CrossCore.Touch\Cirrious.CrossCore.Touch.csproj">
-      <Project>{BBBCD850-E7CB-4B6C-86D9-CE01F2B1C81C}</Project>
-      <Name>Cirrious.CrossCore.Touch</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CrossCore\Cirrious.CrossCore\Cirrious.CrossCore.csproj">
-      <Project>{CFF6F25A-3C3B-44EE-A54C-2ED4AAFF3ADB}</Project>
-      <Name>Cirrious.CrossCore</Name>
     </ProjectReference>
     <ProjectReference Include="..\Cirrious.MvvmCross.Binding.Touch\Cirrious.MvvmCross.Binding.Touch.csproj">
       <Project>{913B13B5-7B2C-4DDA-BECB-DADC827ED895}</Project>
@@ -90,9 +78,17 @@
       <Project>{B6E27475-E7D0-448C-A5CC-5097DCA1E2DD}</Project>
       <Name>Cirrious.MvvmCross</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\PortableSupport\System.Windows.Touch\System.Windows.Touch.csproj">
-      <Project>{9499E72B-FD7C-4A9B-AB6C-0F9B7359257C}</Project>
-      <Name>System.Windows.Touch</Name>
+    <ProjectReference Include="..\..\CrossCore\Cirrious.CrossCore.Touch\Cirrious.CrossCore.Touch.csproj">
+      <Project>{BBBCD850-E7CB-4B6C-86D9-CE01F2B1C81C}</Project>
+      <Name>Cirrious.CrossCore.Touch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrossUI\CrossUI.Core\CrossUI.Core.csproj">
+      <Project>{D9CBBFFE-57E8-4E97-9E16-C34BC4C52827}</Project>
+      <Name>CrossUI.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CrossCore\Cirrious.CrossCore\Cirrious.CrossCore.csproj">
+      <Project>{CFF6F25A-3C3B-44EE-A54C-2ED4AAFF3ADB}</Project>
+      <Name>Cirrious.CrossCore</Name>
     </ProjectReference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
