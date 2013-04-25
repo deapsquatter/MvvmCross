@@ -1,16 +1,17 @@
-// IMvxValueConverterRegistry.cs
+﻿// IMvxStringToTypeParser.cs
 // (c) Copyright Cirrious Ltd. http://www.cirrious.com
 // MvvmCross is licensed using Microsoft Public License (Ms-PL)
 // Contributions and inspirations noted in readme.md and license.txt
 // 
 // Project Lead - Stuart Lodge, @slodge, me@slodge.com
 
-using Cirrious.CrossCore.Converters;
+using System;
 
-namespace Cirrious.MvvmCross.Binding.Binders
+namespace Cirrious.MvvmCross.Platform
 {
-    public interface IMvxValueConverterRegistry
+    public interface IMvxStringToTypeParser
     {
-        void AddOrOverwrite(string converterName, IMvxValueConverter converter);
+        bool TypeSupported(Type targetType);
+        object ReadValue(string rawValue, Type targetType, string fieldOrParameterName);
     }
 }

@@ -38,6 +38,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\IMvxValueConverterRegistry.cs" />
     <Compile Include="Converters\MvxValueConverter.cs" />
     <Compile Include="Core\IMvxApplicable.cs" />
     <Compile Include="Core\IMvxApplicableTo.cs" />
