@@ -9,17 +9,17 @@
 
 using System;
 using System.Threading;
-using Cirrious.MvvmCross.Interfaces.Views;
+using Cirrious.MvvmCross.Views;
 using System.Reflection;
 using MonoMac.AppKit;
-using Cirrious.CrossCore.Interfaces.Core;
-using Cirrious.CrossCore.Platform.Diagnostics;
+using Cirrious.CrossCore.Core;
+using Cirrious.CrossCore.Platform;
 using Cirrious.CrossCore.Exceptions;
 
 namespace Cirrious.MvvmCross.Mac.Views
 {
     public abstract class MvxMacUIThreadDispatcher
-        : IMvxMainThreadDispatcher
+		: MvxMainThreadDispatcher
 	{
         private bool InvokeOrBeginInvoke(Action action)
         {

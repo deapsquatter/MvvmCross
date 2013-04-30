@@ -7,17 +7,15 @@
 // 
 // Project Lead - Stuart Lodge, Cirrious. http://www.cirrious.com
 
-using Cirrious.MvvmCross.Interfaces.ViewModels;
+using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Views;
 using MonoMac.AppKit;
 
 namespace Cirrious.MvvmCross.Mac.Interfaces
 {
-	public interface IMvxMacViewPresenter
+	public interface IMvxMacViewPresenter : IMvxViewPresenter
 	{
-		void Show(MvxShowViewModelRequest view);
-        void Close(IMvxViewModel viewModel);
-	    void ClearBackStack();
+
 	}
 }

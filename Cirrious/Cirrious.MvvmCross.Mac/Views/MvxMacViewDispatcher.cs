@@ -8,12 +8,10 @@
 // Project Lead - Stuart Lodge, Cirrious. http://www.cirrious.com
 
 using System;
-using Cirrious.MvvmCross.Interfaces.ViewModels;
-using Cirrious.MvvmCross.Interfaces.Views;
-using Cirrious.MvvmCross.Mac.Interfaces;
-using Cirrious.MvvmCross.Views;
 using Cirrious.MvvmCross.ViewModels;
-using Cirrious.CrossCore.Platform.Diagnostics;
+using Cirrious.MvvmCross.Views;
+using Cirrious.MvvmCross.Mac.Interfaces;
+using Cirrious.CrossCore.Platform;
 
 namespace Cirrious.MvvmCross.Mac.Views
 {
@@ -28,34 +26,23 @@ namespace Cirrious.MvvmCross.Mac.Views
             _presenter = presenter;
         }
 
-        #region IMvxViewDispatcher Members
 
-        public bool RequestNavigate(MvxShowViewModelRequest request)
-        {
-            Action action = () =>
-                                {
-                                    MvxTrace.TaggedTrace("MacNavigation", "Navigate requested");
-                                    _presenter.Show(request);
-                                };
-            return RequestMainThreadAction(action);
-        }
-        
-        public bool RequestClose(IMvxViewModel toClose)
-        {
-            Action action = () =>
-                                {
-                                    MvxTrace.TaggedTrace("MacNavigation", "Navigate back requested");
-                                    _presenter.Close(toClose);
-                                };
-            return RequestMainThreadAction(action);
-        }
-        
-        public bool RequestRemoveBackStep()
-        {
-#warning What to do with ios back stack?
-            // not supported on Mac really
-            return false;
-        }
+		#region IMvxViewDispatcher implementation
+
+		public bool ShowViewModel(MvxViewModelRequest request)
+		{
+			Action action = () =>
+			{
+				MvxTrace.TaggedTrace("TouchNavigation", "Navigate requested");
+				_presenter.Show(request);
+			};
+			return RequestMainThreadAction(action);
+		}
+
+		public bool ChangePresentation(MvxPresentationHint hint)
+		{
+			return RequestMainThreadAction(() => _presenter.ChangePresentation(hint));
+		}
 
         #endregion
     }

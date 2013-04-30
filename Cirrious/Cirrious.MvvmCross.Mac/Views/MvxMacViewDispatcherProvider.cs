@@ -7,24 +7,24 @@
 // 
 // Project Lead - Stuart Lodge, Cirrious. http://www.cirrious.com
 
-using Cirrious.MvvmCross.Interfaces.Views;
+using Cirrious.MvvmCross.Views;
 using Cirrious.MvvmCross.Mac.Interfaces;
 
 namespace Cirrious.MvvmCross.Mac.Views
 {
-    public class MvxMacViewDispatcherProvider
-        : IMvxViewDispatcherProvider
-    {
-        private readonly IMvxMacViewPresenter _presenter;
-
-        public MvxMacViewDispatcherProvider(IMvxMacViewPresenter presenter)
-        {
-            _presenter = presenter;
-        }
-
-        public IMvxViewDispatcher ViewDispatcher
-        {
-            get { return new MvxMacViewDispatcher(_presenter); }
-        }
-    }
+//    public class MvxMacViewDispatcherProvider
+//        : IMvxViewDispatcherProvider
+//    {
+//        private readonly IMvxMacViewPresenter _presenter;
+//
+//        public MvxMacViewDispatcherProvider(IMvxMacViewPresenter presenter)
+//        {
+//            _presenter = presenter;
+//        }
+//
+//        public IMvxViewDispatcher ViewDispatcher
+//        {
+//            get { return new MvxMacViewDispatcher(_presenter); }
+//        }
+//    }
 }

@@ -10,7 +10,7 @@
 #endregion
 
 using System;
-using Cirrious.MvvmCross.Interfaces.Platform.Lifetime;
+using Cirrious.MvvmCross.Platform;
 using MonoMac.AppKit;
 
 namespace Cirrious.MvvmCross.Mac.Platform

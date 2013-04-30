@@ -8,14 +8,13 @@
 // 
 // Project Lead - Stuart Lodge, Cirrious. http://www.cirrious.com
 using MonoMac.Foundation;
-using Cirrious.MvvmCross.ViewModels;
-using Cirrious.MvvmCross.Binding.Interfaces.BindingContext;
 
 
 #endregion
 
 using System;
-using Cirrious.MvvmCross.Interfaces.ViewModels;
+using Cirrious.MvvmCross.ViewModels;
+using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Mac.ExtensionMethods;
 using Cirrious.MvvmCross.Mac.Interfaces;
 using Cirrious.MvvmCross.Views;
@@ -57,37 +56,30 @@ namespace Cirrious.MvvmCross.Mac.Views
 		// Shared initialization code
 		void Initialize ()
 		{
+			//this.AdaptForBinding();
 		}
 
-		public void ClearBackStack()
+		public override void LoadView ()
 		{
-			throw new NotImplementedException();
-			/*
-            // note - we do *not* use CanGoBack here - as that seems to always returns true!
-            while (NavigationService.BackStack.Any())
-                NavigationService.RemoveBackEntry();
-         */
+			base.LoadView ();
+			BindingContext = new MvxBindingContext ();
+			this.OnViewCreate ();
 		}
 
-		public object DataContext { 
-			get{ return BindingContext.DataContext; }
+		public object DataContext
+		{
+			get { return BindingContext.DataContext; }
 			set { BindingContext.DataContext = value; }
 		}
-		
+
 		public IMvxViewModel ViewModel
 		{
 			get { return (IMvxViewModel) DataContext; }
 			set { DataContext = value; }
 		}
 
-		public MvxShowViewModelRequest ShowRequest { get; set; }
-		
-		public IMvxBaseBindingContext<NSView> BindingContext { get; set; }
-			
-		public override void LoadView ()
-		{
-			base.LoadView ();
-			this.OnViewCreate(ShowRequest);
-		}
+		public MvxViewModelRequest Request { get; set; }
+
+		public IMvxBindingContext BindingContext { get; set; }
 	}
 }

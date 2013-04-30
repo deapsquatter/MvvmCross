@@ -7,12 +7,11 @@
 // </copyright>
 // 
 // Project Lead - Stuart Lodge, Cirrious. http://www.cirrious.com
-using Cirrious.MvvmCross.ViewModels;
 
 
 #endregion
 
-using Cirrious.MvvmCross.Interfaces.ViewModels;
+using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Mac.Interfaces;
 using Cirrious.MvvmCross.Views;
 
@@ -21,25 +20,20 @@ namespace Cirrious.MvvmCross.Mac.Views.Presenters
     public class MvxBaseViewPresenter 
         : IMvxMacViewPresenter
     {
-        public virtual void Show(MvxShowViewModelRequest view)
-        {
-        }
+		#region IMvxViewPresenter implementation
 
-        public virtual void CloseModalViewController()
-        {
-        }
+		public virtual void Show (MvxViewModelRequest request)
+		{
 
-        public virtual void Close(IMvxViewModel viewModel)
-        {
-        }
+		}
 
-        public virtual void ClearBackStack()
-        {
-        }
+		public virtual void ChangePresentation (MvxPresentationHint hint)
+		{
+			throw new System.NotImplementedException ();
+		}
 
-        public virtual void NativeModalViewControllerDisappearedOnItsOwn()
-        {
-            // ignored
-        }
+		#endregion
+
+
     }
 }

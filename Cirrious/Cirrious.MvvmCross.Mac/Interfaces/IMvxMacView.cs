@@ -8,20 +8,19 @@
 // 
 // Project Lead - Stuart Lodge, Cirrious. http://www.cirrious.com
 using Cirrious.MvvmCross.ViewModels;
+using Cirrious.MvvmCross.Binding.BindingContext;
 
 
 #endregion
 
-using Cirrious.MvvmCross.Interfaces.ViewModels;
-using Cirrious.MvvmCross.Interfaces.Views;
+using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Views;
 
 namespace Cirrious.MvvmCross.Mac.Interfaces
 {
     public interface IMvxMacView
-		: IMvxView
+		: IMvxView, IMvxBindingContextOwner
 	{
-		void ClearBackStack();
-		MvxShowViewModelRequest ShowRequest { get; set; }
+		MvxViewModelRequest Request { get; set; }
     }
 }

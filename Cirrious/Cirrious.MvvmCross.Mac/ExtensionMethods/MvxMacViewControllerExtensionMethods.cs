@@ -8,57 +8,51 @@
 // 
 // Project Lead - Stuart Lodge, Cirrious. http://www.cirrious.com
 using System;
-using Cirrious.CrossCore.Interfaces.IoC;
+using Cirrious.CrossCore.Platform;
+using Cirrious.CrossCore;
+using Cirrious.MvvmCross.Mac.Views;
+using Cirrious.CrossCore.Exceptions;
 
 
 #endregion
 
 using System.Collections.Generic;
-using Cirrious.MvvmCross.Interfaces.ViewModels;
-using Cirrious.MvvmCross.Interfaces.Views;
-using Cirrious.MvvmCross.Mac.Interfaces;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Views;
+using Cirrious.MvvmCross.Mac.Interfaces;
 
 namespace Cirrious.MvvmCross.Mac.ExtensionMethods
 {
     public static class MvxMacViewControllerExtensionMethods
     {
-		public static void OnViewCreate(this IMvxMacView macView, MvxShowViewModelRequest viewModelRequest)
+		public static void OnViewCreate(this IMvxMacView macView)
 		{
-			macView.OnViewCreate(() => { return macView.LoadViewModel(viewModelRequest); });
+			macView.OnViewCreate(() => { return macView.LoadViewModel(); });
 		}
 
-		private static IMvxViewModel LoadViewModel(this IMvxMacView macView,
-		                                           MvxShowViewModelRequest viewModelRequest)
+		private static IMvxViewModel LoadViewModel(this IMvxMacView macView)
 		{
-			if (viewModelRequest.ClearTop)
+			if (macView.Request == null)
 			{
-#warning TODO - BackStack not cleared for Mac
-				//phoneView.ClearBackStack();
+				MvxTrace.Trace(
+					"Request is null - assuming this is a TabBar type situation where ViewDidLoad is called during construction... patching the request now - but watch out for problems with virtual calls during construction");
+				macView.Request = Mvx.Resolve<IMvxCurrentRequest>().CurrentRequest;
 			}
-			
-			var loaderService = Mvx.Resolve<IMvxViewModelLoader>();
-			var viewModel = loaderService.LoadViewModel(viewModelRequest);
-			
+
+			var instanceRequest = macView.Request as MvxViewModelInstaceRequest;
+			if (instanceRequest != null)
+			{
+				return instanceRequest.ViewModelInstance;
+			}
+
+			var loader = Mvx.Resolve<IMvxViewModelLoader>();
+			var viewModel = loader.LoadViewModel(macView.Request, null /* no saved state on Mac currently */);
+			if (viewModel == null)
+				throw new MvxException("ViewModel not loaded for " + macView.Request.ViewModelType);
 			return viewModel;
 		}
 
-		public static void OnViewCreate(this IMvxMacView macView, Func<IMvxViewModel> viewModelLoader)
-		{
-			if (macView.ViewModel != null)
-				return;
-			
-			var viewModel = viewModelLoader();
-			viewModel.RegisterView(macView);
-			macView.ViewModel = viewModel;
-		}
-		
-		public static void OnViewDestroy(this IMvxMacView winRTView)
-		{
-			if (winRTView.ViewModel != null)
-				winRTView.ViewModel.UnRegisterView(winRTView);
-		}
+
 
     }
 }

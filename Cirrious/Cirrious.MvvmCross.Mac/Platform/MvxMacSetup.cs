@@ -7,26 +7,22 @@
 // </copyright>
 // 
 // Project Lead - Stuart Lodge, Cirrious. http://www.cirrious.com
-using Cirrious.CrossCore.Interfaces.IoC;
-using Cirrious.CrossCore.Interfaces.Platform.Diagnostics;
-using Cirrious.CrossCore.Interfaces.Plugins;
 using Cirrious.CrossCore.Plugins;
 using Cirrious.MvvmCross.Binding;
-using Cirrious.MvvmCross.Binding.Touch;
-using Cirrious.MvvmCross.Binding.Interfaces.Binders;
-using Cirrious.MvvmCross.Binding.Binders;
-using Cirrious.MvvmCross.Binding.Interfaces.Bindings.Target.Construction;
-
+using Cirrious.MvvmCross.Binding.Bindings.Target.Construction;
+using System.Reflection;
+using Cirrious.CrossCore;
+using Cirrious.CrossCore.Platform;
 
 #endregion
 
 using System;
 using System.Collections.Generic;
-using Cirrious.MvvmCross.Interfaces.Platform;
-using Cirrious.MvvmCross.Interfaces.Platform.Lifetime;
+using Cirrious.CrossCore.Converters;
 using Cirrious.MvvmCross.Platform;
 using Cirrious.MvvmCross.Mac.Interfaces;
 using Cirrious.MvvmCross.Mac.Views;
+using Cirrious.MvvmCross.Binding.Binders;
 using Cirrious.MvvmCross.Views;
 
 namespace Cirrious.MvvmCross.Mac.Platform
@@ -51,8 +47,8 @@ namespace Cirrious.MvvmCross.Mac.Platform
 
         protected override IMvxPluginManager CreatePluginManager()
         {
-			var toReturn = new MvxLoaderBasedPluginManager();
-			var registry = new MvxLoaderPluginRegistry(".Mac", toReturn.Loaders);
+			var toReturn = new MvxLoaderPluginManager();
+			var registry = new MvxLoaderPluginRegistry(".Mac", toReturn.Finders);
 			AddPluginsLoaders(registry);
 			return toReturn;
 		}
@@ -74,20 +70,15 @@ namespace Cirrious.MvvmCross.Mac.Platform
             Mvx.RegisterSingleton<IMvxMacViewCreator>(container);
         }
 
-        protected override MvvmCross.Interfaces.Views.IMvxViewDispatcherProvider CreateViewDispatcherProvider()
-        {
-            return new MvxMacViewDispatcherProvider(_presenter);
-        }
-	
+		protected override IMvxViewDispatcher CreateViewDispatcher()
+		{
+			return new MvxMacViewDispatcher(_presenter);
+		}
+
 		protected override void InitializePlatformServices ()
 		{
 			Mvx.RegisterSingleton<IMvxLifetime>(_applicationDelegate);
 		}
-
-        protected override IDictionary<Type, Type> GetViewModelViewLookup()
-        {
-            return GetViewModelViewLookup(GetType().Assembly, typeof(IMvxMacView));
-        }
 
 		protected override void InitializeLastChance()
 		{
@@ -103,33 +94,38 @@ namespace Cirrious.MvvmCross.Mac.Platform
 		
 		protected virtual MvxBindingBuilder CreateBindingBuilder()
 		{
-			var bindingBuilder = new MvxMacBindingBuilder(FillTargetFactories, FillValueConverters);
+			var bindingBuilder = new MvxBindingBuilder();
 			return bindingBuilder;
+
+//			var bindingBuilder = new MvxTouchBindingBuilder(FillTargetFactories, FillValueConverters, FillBindingNames);
+//			return bindingBuilder;
 		}
 		
 		protected virtual void FillValueConverters(IMvxValueConverterRegistry registry)
 		{
-			var holders = ValueConverterHolders;
-			if (holders == null)
-				return;
-			
-			var filler = new MvxInstanceBasedValueConverterRegistryFiller(registry);
-			var staticFiller = new MvxStaticBasedValueConverterRegistryFiller(registry);
-			foreach (var converterHolder in holders)
-			{
-				filler.AddFieldConverters(converterHolder);
-				staticFiller.AddStaticFieldConverters(converterHolder);
-			}
+			registry.Fill(ValueConverterAssemblies);
+			registry.Fill(ValueConverterHolders);
 		}
-		
-		protected virtual IEnumerable<Type> ValueConverterHolders
+
+		protected virtual List<Type> ValueConverterHolders
 		{
-			get { return null; }
+			get { return new List<Type>(); }
+		}
+
+		protected virtual List<Assembly> ValueConverterAssemblies
+		{
+			get
+			{
+				var toReturn = new List<Assembly>();
+				toReturn.AddRange(GetViewModelAssemblies());
+				toReturn.AddRange(GetViewAssemblies());
+				return toReturn;
+			}
 		}
 		
 		protected virtual void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)
 		{
 			// this base class does nothing
-		}    
+		}   
 	}
 }

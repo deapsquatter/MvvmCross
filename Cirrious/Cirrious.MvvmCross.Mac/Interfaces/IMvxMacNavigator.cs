@@ -8,14 +8,13 @@
 // Project Lead - Stuart Lodge, Cirrious. http://www.cirrious.com
 
 using Cirrious.MvvmCross.ViewModels;
-using Cirrious.MvvmCross.Interfaces.ViewModels;
 using Cirrious.MvvmCross.Views;
 
 namespace Cirrious.MvvmCross.Mac.Interfaces
 {
-	public interface IMvxMacNavigator
-	{
-		void NavigateTo(MvxShowViewModelRequest request);		
-	    void Close(IMvxViewModel toClose);
-	}
+//	public interface IMvxMacNavigator
+//	{
+//		void NavigateTo(MvxShowViewModelRequest request);		
+//	    void Close(IMvxViewModel toClose);
+//	}
 }

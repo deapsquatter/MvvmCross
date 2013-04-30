@@ -6,18 +6,17 @@
 // </copyright>
 // 
 // Project Lead - Stuart Lodge, Cirrious. http://www.cirrious.com
-using Cirrious.MvvmCross.Interfaces.Views;
 using System;
+using Cirrious.CrossCore;
 
 
-using Cirrious.MvvmCross.Interfaces.ViewModels;
-using Cirrious.MvvmCross.Mac.Interfaces;
+using Cirrious.CrossCore.Exceptions;
+using Cirrious.CrossCore.IoC;
+using Cirrious.CrossCore.Platform;
+using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Views;
 using MonoMac.AppKit;
-using Cirrious.MvvmCross.ViewModels;
-using Cirrious.CrossCore.Interfaces.IoC;
-using Cirrious.CrossCore.Exceptions;
-using Cirrious.CrossCore.Platform.Diagnostics;
+using Cirrious.MvvmCross.Mac.Interfaces;
 
 namespace Cirrious.MvvmCross.Mac.Views.Presenters
 {
@@ -39,18 +38,18 @@ namespace Cirrious.MvvmCross.Mac.Views.Presenters
 			_window = window;
         } 
 
-		protected virtual void PlaceView(MvxShowViewModelRequest request, NSViewController viewController)
+		protected virtual void PlaceView(MvxViewModelRequest request, NSViewController viewController)
 		{
 			Window.ContentView.AddSubview(viewController.View);
 		}
 
-		protected virtual IMvxMacView GetView(MvxShowViewModelRequest request)
+		protected virtual IMvxMacView GetView(MvxViewModelRequest request)
 		{
 			var creator = Mvx.Resolve<IMvxMacViewCreator>();
 			return creator.CreateView(request);
 		}
 
-        public override void Show(MvxShowViewModelRequest request)
+        public override void Show(MvxViewModelRequest request)
         {
 			try
 			{

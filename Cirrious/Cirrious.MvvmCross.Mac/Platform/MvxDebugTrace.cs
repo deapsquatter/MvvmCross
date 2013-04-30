@@ -7,7 +7,7 @@
 // </copyright>
 // 
 // Project Lead - Stuart Lodge, Cirrious. http://www.cirrious.com
-using Cirrious.CrossCore.Interfaces.Platform.Diagnostics;
+using Cirrious.CrossCore.Platform;
 
 
 #endregion
