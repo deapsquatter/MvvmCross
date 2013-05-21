@@ -147,6 +147,11 @@ namespace CrossUI.Touch.Dialog.Elements
                 InsertVisual(Elements.Count - 1, UITableViewRowAnimation.None, 1);
         }
 
+	    public void Add (RootElement element)
+	    {
+			Add ((Element)element);
+		}
+
         /// <summary>
         ///    Add version that can be used with LINQ
         /// </summary>

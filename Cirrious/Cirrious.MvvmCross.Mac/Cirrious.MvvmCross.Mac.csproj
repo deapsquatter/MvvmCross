@@ -30,7 +30,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="MonoMac" />
+    <Reference Include="XamMac, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065">
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -51,6 +53,8 @@
     <Compile Include="Platform\MvxMacSetup.cs" />
     <Compile Include="Views\MvxViewController.cs" />
     <Compile Include="Views\Presenters\MvxBaseViewPresenter.cs" />
+    <Compile Include="Interfaces\IMvxCurrentRequest.cs" />
+    <Compile Include="Views\MvxViewModelInstaceRequest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -61,6 +65,10 @@
     <ProjectReference Include="..\Cirrious.MvvmCross\Cirrious.MvvmCross.Mac.Pcl.csproj">
       <Project>{B6E27475-E7D0-448C-A5CC-5097DCA1E2DD}</Project>
       <Name>Cirrious.MvvmCross.Mac.Pcl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cirrious.MvvmCross.Binding\Cirrious.MvvmCross.Binding.Mac.Pcl.csproj">
+      <Project>{64DCD397-9019-41E8-A928-E5F5C5DF185B}</Project>
+      <Name>Cirrious.MvvmCross.Binding.Mac.Pcl</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
