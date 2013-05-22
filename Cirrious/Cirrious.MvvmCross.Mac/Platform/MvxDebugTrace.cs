@@ -18,6 +18,7 @@ namespace Cirrious.MvvmCross.Mac.Platform
 {
     public class MvxDebugTrace : IMvxTrace
     {
+
         #region IMvxTrace Members
 
         public void Trace(MvxTraceLevel level, string tag, string message)
@@ -29,6 +30,11 @@ namespace Cirrious.MvvmCross.Mac.Platform
         {
             Console.WriteLine(tag + ": " + level + ": " + message, args);
         }
+
+		public void Trace (MvxTraceLevel level, string tag, Func<string> message)
+		{
+			throw new NotImplementedException ();
+		}
 
         #endregion
     }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -10,8 +9,6 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Cirrious.CrossCore</RootNamespace>
     <AssemblyName>Cirrious.CrossCore</AssemblyName>
-    <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProductVersion>12.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -33,9 +30,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\Key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\IMvxValueConverterRegistry.cs" />
@@ -55,6 +59,8 @@
     <Compile Include="Exceptions\MvxException.cs" />
     <Compile Include="Exceptions\MvxExceptionExtensionMethods.cs" />
     <Compile Include="Core\IMvxDisposeSource.cs" />
+    <Compile Include="IoC\MvxLazySingletonCreator.cs" />
+    <Compile Include="IoC\MvxPropertyInjectingIoCContainer.cs" />
     <Compile Include="IoC\MvxTypeExtensions.cs" />
     <Compile Include="Mvx.cs" />
     <Compile Include="Parse\MvxParser.cs" />
@@ -97,6 +103,13 @@
     <Compile Include="Platform\IMvxImageHelper.cs" />
     <Compile Include="UI\IMvxNativeColor.cs" />
     <Compile Include="UI\MvxColor.cs" />
+    <Compile Include="Core\MvxEventInfoExtensions.cs" />
+    <Compile Include="WeakSubscription\MvxGeneralEventSubscription.cs" />
+    <Compile Include="WeakSubscription\MvxNotifyCollectionChangedEventSubscription.cs" />
+    <Compile Include="WeakSubscription\MvxNotifyPropertyChangedEventSubscription.cs" />
+    <Compile Include="WeakSubscription\MvxValueEventSubscription.cs" />
+    <Compile Include="WeakSubscription\MvxWeakEventSubscription.cs" />
+    <Compile Include="WeakSubscription\MvxWeakSubscriptionExtensionMethods.cs" />
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

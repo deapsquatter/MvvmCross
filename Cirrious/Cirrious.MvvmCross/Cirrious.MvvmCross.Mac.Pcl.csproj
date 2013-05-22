@@ -56,7 +56,6 @@
     <Compile Include="ViewModels\IMvxViewModelTypeFinder.cs" />
     <Compile Include="ViewModels\IMvxTypeToTypeLookupBuilder.cs" />
     <Compile Include="ViewModels\IMvxViewModelByNameLookup.cs" />
-    <Compile Include="ViewModels\IMvxViewPresenter.cs" />
     <Compile Include="ViewModels\MvxCommandAttribute.cs" />
     <Compile Include="ViewModels\MvxCommandCollectionBuilder.cs" />
     <Compile Include="ViewModels\MvxPresentationHint.cs" />
@@ -110,6 +109,7 @@
     <Compile Include="Platform\IMvxStringToTypeParser.cs" />
     <Compile Include="Platform\MvxStringToTypeParserSingleton.cs" />
     <Compile Include="ViewModels\MvxClosePresentationHint.cs" />
+    <Compile Include="Views\IMvxViewPresenter.cs" />
   </ItemGroup>
   <ItemGroup />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

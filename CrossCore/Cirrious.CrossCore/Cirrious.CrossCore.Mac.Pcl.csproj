@@ -106,6 +106,15 @@
     <Compile Include="UI\IMvxNativeColor.cs" />
     <Compile Include="UI\MvxColor.cs" />
     <Compile Include="Converters\IMvxValueConverterRegistry.cs" />
+    <Compile Include="WeakSubscription\MvxGeneralEventSubscription.cs" />
+    <Compile Include="WeakSubscription\MvxNotifyCollectionChangedEventSubscription.cs" />
+    <Compile Include="WeakSubscription\MvxNotifyPropertyChangedEventSubscription.cs" />
+    <Compile Include="WeakSubscription\MvxValueEventSubscription.cs" />
+    <Compile Include="WeakSubscription\MvxWeakEventSubscription.cs" />
+    <Compile Include="WeakSubscription\MvxWeakSubscriptionExtensionMethods.cs" />
+    <Compile Include="IoC\MvxLazySingletonCreator.cs" />
+    <Compile Include="IoC\MvxPropertyInjectingIoCContainer.cs" />
+    <Compile Include="Core\MvxEventInfoExtensions.cs" />
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -115,4 +124,7 @@
   </Target>
   -->
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="WeakSubscription\" />
+  </ItemGroup>
 </Project>

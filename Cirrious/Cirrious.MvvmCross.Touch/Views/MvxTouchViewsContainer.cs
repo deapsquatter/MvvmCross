@@ -10,10 +10,6 @@ using Cirrious.CrossCore.Exceptions;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Views;
 
-#region using
-
-#endregion
-
 namespace Cirrious.MvvmCross.Touch.Views
 {
     public class MvxTouchViewsContainer
@@ -22,8 +18,6 @@ namespace Cirrious.MvvmCross.Touch.Views
           , IMvxCurrentRequest
     {
         public MvxViewModelRequest CurrentRequest { get; private set; }
-
-        #region IMvxTouchViewCreator Members
 
         public virtual IMvxTouchView CreateView(MvxViewModelRequest request)
         {
@@ -48,11 +42,9 @@ namespace Cirrious.MvvmCross.Touch.Views
 
         public virtual IMvxTouchView CreateView(IMvxViewModel viewModel)
         {
-            var request = new MvxViewModelInstaceRequest(viewModel);
+            var request = new MvxViewModelInstanceRequest(viewModel);
             var view = CreateView(request);
             return view;
         }
-
-        #endregion
     }
 }

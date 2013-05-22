@@ -105,6 +105,10 @@
       <Project>{64DCD997-9919-41E8-A998-E5F5C5DF185B}</Project>
       <Name>Cirrious.MvvmCross.Binding.Droid.Pcl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cirrious.MvvmCross.Localisation\Cirrious.MvvmCross.Localization.Droid.Pcl.csproj">
+      <Project>{D89444C1-D48F-2AD0-A3B9-353A93425AB7}</Project>
+      <Name>Cirrious.MvvmCross.Localization.Droid.Pcl</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
