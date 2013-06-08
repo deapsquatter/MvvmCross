@@ -125,7 +125,8 @@ namespace CrossUI.Touch.Dialog.Elements
             public override void LayoutSubviews()
             {
                 base.LayoutSubviews();
-                View.Frame = ContentView.Bounds;
+				View.Frame = new System.Drawing.RectangleF(5,ContentView.Bounds.Top,ContentView.Bounds.Width, 
+				                                           ContentView.Bounds.Height);
                 View.SetNeedsDisplay();
             }
         }

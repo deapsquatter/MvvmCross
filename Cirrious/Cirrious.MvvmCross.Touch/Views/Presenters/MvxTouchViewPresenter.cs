@@ -71,10 +71,10 @@ namespace Cirrious.MvvmCross.Touch.Views.Presenters
             if (viewController == null)
                 throw new MvxException("Passed in IMvxTouchView is not a UIViewController");
 
-            if (_masterNavigationController == null)
+            if (MasterNavigationController == null)
                 ShowFirstView(viewController);
             else
-                _masterNavigationController.PushViewController(viewController, true /*animated*/);
+                MasterNavigationController.PushViewController(viewController, true /*animated*/);
         }
 
 		public virtual void CloseModalViewController()

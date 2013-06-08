@@ -6,6 +6,7 @@
 // Project Lead - Stuart Lodge, @slodge, me@slodge.com
 
 using System;
+using MonoTouch.Foundation;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Touch.Platform;
 using Cirrious.CrossCore.Touch.Views;
@@ -40,6 +41,22 @@ namespace Cirrious.MvvmCross.Plugins.Email.Touch
 
             _modalHost.PresentModalViewController(_mail, true);
         }
+
+		public void ComposeEmail(string to, string cc, string subject, string body, bool isHtml, byte[] attachment)
+		{
+			if (!MFMailComposeViewController.CanSendMail)
+				return;
+
+			_mail = new MFMailComposeViewController();
+			_mail.SetMessageBody(body ?? string.Empty, isHtml);
+			_mail.SetSubject(subject ?? string.Empty);
+			_mail.SetCcRecipients(new[] {cc ?? string.Empty});
+			_mail.SetToRecipients(new[] {to ?? string.Empty});
+			_mail.AddAttachmentData (NSData.FromArray(attachment), "image/jpeg", string.Empty);
+			_mail.Finished += HandleMailFinished;
+
+			_modalHost.PresentModalViewController(_mail, true);
+		}
 
         private void HandleMailFinished(object sender, MFComposeResultEventArgs e)
         {
