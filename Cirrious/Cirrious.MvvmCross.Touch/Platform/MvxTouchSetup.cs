@@ -15,6 +15,7 @@ using Cirrious.CrossCore.Plugins;
 using Cirrious.CrossCore.Touch.Platform;
 using Cirrious.MvvmCross.Binding;
 using Cirrious.MvvmCross.Binding.Binders;
+using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Binding.Bindings.Target.Construction;
 using Cirrious.MvvmCross.Binding.Touch;
 using Cirrious.MvvmCross.Platform;
@@ -45,6 +46,16 @@ namespace Cirrious.MvvmCross.Touch.Platform
 			_presenter = presenter;
 			_applicationDelegate = applicationDelegate;
 		}
+
+        protected UIWindow Window
+        {
+            get { return _window; }
+        }
+
+        protected MvxApplicationDelegate ApplicationDelegate
+        {
+            get { return _applicationDelegate; }
+        }
 
 		protected override IMvxTrace CreateDebugTrace()
 		{
@@ -141,17 +152,25 @@ namespace Cirrious.MvvmCross.Touch.Platform
 
 		protected virtual void InitialiseBindingBuilder()
 		{
-			var bindingBuilder = CreateBindingBuilder();
-			bindingBuilder.DoRegistration();
+            RegisterBindingBuilderCallbacks();
+            var bindingBuilder = CreateBindingBuilder();
+		    bindingBuilder.DoRegistration();
 		}
 
-		protected virtual MvxBindingBuilder CreateBindingBuilder()
+	    protected virtual void RegisterBindingBuilderCallbacks()
+	    {
+	        Mvx.CallbackWhenRegistered<IMvxValueConverterRegistry>(FillValueConverters);
+	        Mvx.CallbackWhenRegistered<IMvxTargetBindingFactoryRegistry>(FillTargetFactories);
+	        Mvx.CallbackWhenRegistered<IMvxBindingNameRegistry>(FillBindingNames);
+	    }
+
+	    protected virtual MvxBindingBuilder CreateBindingBuilder()
 		{
-			var bindingBuilder = new MvxTouchBindingBuilder(FillTargetFactories, FillValueConverters, FillBindingNames);
+            var bindingBuilder = new MvxTouchBindingBuilder();
 			return bindingBuilder;
 		}
 
-		protected virtual void FillBindingNames (Cirrious.MvvmCross.Binding.BindingContext.IMvxBindingNameRegistry obj)
+		protected virtual void FillBindingNames (IMvxBindingNameRegistry obj)
 		{
 			// this base class does nothing
 		}
@@ -174,7 +193,6 @@ namespace Cirrious.MvvmCross.Touch.Platform
 				var toReturn = new List<Assembly>();
 				toReturn.AddRange(GetViewModelAssemblies());
 				toReturn.AddRange(GetViewAssemblies());
-                toReturn.Add(typeof(Cirrious.MvvmCross.Localization.MvxLanguageConverter).Assembly);
                 return toReturn;
 			}
 		}

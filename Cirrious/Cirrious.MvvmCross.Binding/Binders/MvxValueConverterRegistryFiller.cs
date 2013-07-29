@@ -9,7 +9,6 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Cirrious.CrossCore.Converters;
-using Cirrious.CrossCore;
 using Cirrious.CrossCore.IoC;
 
 namespace Cirrious.MvvmCross.Binding.Binders
@@ -72,7 +71,7 @@ namespace Cirrious.MvvmCross.Binding.Binders
 
         public virtual void FillFrom(IMvxValueConverterRegistry registry, Assembly assembly)
         {
-            var pairs = from type in assembly.GetTypes()
+            var pairs = from type in assembly.ExceptionSafeGetTypes()
                         where type.IsPublic
                         where !type.IsAbstract
                         where typeof (IMvxValueConverter).IsAssignableFrom(type)

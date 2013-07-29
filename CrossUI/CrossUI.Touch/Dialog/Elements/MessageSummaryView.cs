@@ -146,15 +146,15 @@ namespace CrossUI.Touch.Dialog.Elements
 
             UIColor.FromRGB(36, 112, 216).SetColor();
             var diff = DateTime.Now - Date;
-            string label;
-            if (DateTime.Now.Day == Date.Day)
-                label = Date.ToShortTimeString();
-            else if (diff <= TimeSpan.FromHours(24))
-                label = "Yesterday".GetText();
-            else if (diff < TimeSpan.FromDays(6))
-                label = Date.ToString("dddd");
-            else
-                label = Date.ToShortDateString();
+            string label = new PrettyTime.PrettyTime().format(Date);
+//            if (DateTime.Now.Day == Date.Day)
+//                label = Date.ToShortTimeString();
+//            else if (diff <= TimeSpan.FromHours(24))
+//                label = "Yesterday".GetText();
+//            else if (diff < TimeSpan.FromDays(6))
+//                label = Date.ToString("dddd");
+//            else
+//                label = Date.ToShortDateString();
             ssize = StringSize(label, SubjectFont);
             float dateSize = ssize.Width + padright + 5;
             DrawString(label, new RectangleF(Bounds.Width - dateSize, 6, dateSize, 14), SubjectFont,

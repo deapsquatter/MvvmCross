@@ -257,7 +257,7 @@ namespace Cirrious.CrossCore.IoC
 
         public virtual object IoCConstruct(Type type)
         {
-            var constructors = type.GetConstructors(BindingFlags.Instance | BindingFlags.Public);
+			var constructors = type.GetConstructors(BindingFlags.Instance | BindingFlags.Public);
             var firstConstructor = constructors.FirstOrDefault();
 
             if (firstConstructor == null)
@@ -368,11 +368,18 @@ namespace Cirrious.CrossCore.IoC
                 object parameterValue;
                 if (!TryResolve(parameterInfo.ParameterType, out parameterValue))
                 {
-                    throw new MvxException(
-                        "Failed to resolve parameter for parameter {0} of type {1} when creating {2}",
-                        parameterInfo.Name,
-                        parameterInfo.ParameterType.Name,
-                        type.FullName);
+                    if (parameterInfo.IsOptional)
+                    {
+                        parameterValue = Type.Missing;
+                    }
+                    else
+                    {
+                        throw new MvxException(
+                            "Failed to resolve parameter for parameter {0} of type {1} when creating {2}",
+                            parameterInfo.Name,
+                            parameterInfo.ParameterType.Name,
+                            type.FullName);
+                    }
                 }
 
                 parameters.Add(parameterValue);

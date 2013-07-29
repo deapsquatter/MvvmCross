@@ -42,7 +42,6 @@
     <EnablePackageSigning>false</EnablePackageSigning>
     <IncludeMonoRuntime>false</IncludeMonoRuntime>
     <UseSGen>false</UseSGen>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <ItemGroup>
@@ -118,6 +117,12 @@
     <Compile Include="WeakSubscription\MvxWeakEventSubscription.cs" />
     <Compile Include="WeakSubscription\MvxWeakSubscriptionExtensionMethods.cs" />
     <Compile Include="Core\MvxEventInfoExtensions.cs" />
+    <Compile Include="WeakSubscription\MvxNamedNotifyPropertyChangedEventSubscription.cs" />
+    <Compile Include="Core\MvxApplicable.cs" />
+    <Compile Include="Core\MvxApplicableTo.cs" />
+    <Compile Include="Core\MvxPropertyNameExtensionMethods.cs" />
+    <Compile Include="IoC\IMvxTypeCache.cs" />
+    <Compile Include="IoC\MvxTypeCache.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

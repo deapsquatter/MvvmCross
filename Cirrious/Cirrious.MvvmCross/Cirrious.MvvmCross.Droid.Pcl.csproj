@@ -40,7 +40,6 @@
     <EnablePackageSigning>false</EnablePackageSigning>
     <IncludeMonoRuntime>false</IncludeMonoRuntime>
     <UseSGen>false</UseSGen>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <ItemGroup>
@@ -77,7 +76,6 @@
     <Compile Include="ViewModels\MvxViewModelLoader.cs" />
     <Compile Include="ViewModels\IMvxNavigationSerializer.cs" />
     <Compile Include="ViewModels\IMvxBundle.cs" />
-    <Compile Include="ViewModels\MvxNotifyPropertyExtensionMethods.cs" />
     <Compile Include="ViewModels\MvxBundle.cs" />
     <Compile Include="Platform\MvxSimplePropertyDictionaryExtensionMethods.cs" />
     <Compile Include="ViewModels\MvxViewModelExtensions.cs" />
@@ -110,9 +108,16 @@
     <Compile Include="Views\MvxViewsContainer.cs" />
     <Compile Include="Platform\IMvxFillableStringToTypeParser.cs" />
     <Compile Include="Platform\IMvxStringToTypeParser.cs" />
-    <Compile Include="Platform\MvxStringToTypeParserSingleton.cs" />
     <Compile Include="ViewModels\MvxClosePresentationHint.cs" />
     <Compile Include="Views\IMvxViewPresenter.cs" />
+    <Compile Include="Platform\IMvxSettings.cs" />
+    <Compile Include="Platform\MvxSettings.cs" />
+    <Compile Include="ViewModels\IMvxInpcInterceptor.cs" />
+    <Compile Include="ViewModels\IMvxNotifyPropertyChanged.cs" />
+    <Compile Include="ViewModels\MvxInpcInterceptionResult.cs" />
+    <Compile Include="ViewModels\MvxPropertyChangedListener.cs" />
+    <Compile Include="IMvxSingletonCache.cs" />
+    <Compile Include="MvxSingletonCache.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup />

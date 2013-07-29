@@ -41,6 +41,9 @@
     <Reference Include="System.Core" />
     <Reference Include="mscorlib" />
     <Reference Include="monotouch" />
+    <Reference Include="PrettyTime.NET">
+      <HintPath>..\..\..\prettytime\PrettyTime.NET.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>

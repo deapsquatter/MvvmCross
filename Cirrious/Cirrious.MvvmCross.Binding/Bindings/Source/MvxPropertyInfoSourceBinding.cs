@@ -93,9 +93,13 @@ namespace Cirrious.MvvmCross.Binding.Bindings.Source
             }
         }
 
-        private void SourcePropertyChanged(object sender, PropertyChangedEventArgs e)
+        // Note - this is public because we use it in weak referenced situations
+        public void SourcePropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == PropertyName)
+            // we test for null or empty here - this means all properties have changed
+            // - fix for https://github.com/slodge/MvvmCross/issues/280 
+            if (string.IsNullOrEmpty(e.PropertyName)
+                || e.PropertyName == PropertyName)
                 OnBoundPropertyChanged();
         }
 
