@@ -3,13 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B6E27475-E7D0-448C-A5CC-5097DCA1E2DD}</ProjectGuid>
+    <ProjectGuid>{B1E27475-E4D0-448C-A5CC-5097DCA1E2DD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Cirrious.MvvmCross</RootNamespace>
     <AssemblyName>Cirrious.MvvmCross</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{42C0BBD9-55CE-4FC1-8D90-A7348ABAFB23};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
@@ -126,9 +125,9 @@
   </Target>
   -->
   <ItemGroup>
-    <ProjectReference Include="..\..\CrossCore\Cirrious.CrossCore\Cirrious.CrossCore.Mac.Pcl.csproj">
-      <Project>{CFF6F25A-3C3B-44EE-A54C-2ED4AAFF3ADB}</Project>
-      <Name>Cirrious.CrossCore.Mac.Pcl</Name>
+    <ProjectReference Include="..\..\CrossCore\Cirrious.CrossCore\Cirrious.CrossCore.Console.Pcl.csproj">
+      <Project>{CFF7F27A-3C3B-44EE-A54C-2ED4AAFF3ADB}</Project>
+      <Name>Cirrious.CrossCore.Console.Pcl</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

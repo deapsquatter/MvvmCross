@@ -138,6 +138,11 @@
     <Compile Include="BindingContext\MvxBindingContextOwnerExtensions.cs" />
     <Compile Include="BindingContext\MvxBindingContextOwnerExtensions.Clear.cs" />
     <Compile Include="Views\MvxBaseImageViewLoader.cs" />
+    <Compile Include="MvxCoreBindingBuilder.cs" />
+    <Compile Include="ValueConverters\MvxCommandParameterValueConverter.cs" />
+    <Compile Include="ValueConverters\MvxWrappingCommand.cs" />
+    <Compile Include="Binders\IMvxAutoValueConverters.cs" />
+    <Compile Include="Binders\MvxAutoValueConverters.cs" />
   </ItemGroup>
   <ItemGroup />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -153,8 +158,13 @@
       <Project>{CFF6F25A-3C3B-44EE-A54C-2ED4AAFF3ADB}</Project>
       <Name>Cirrious.CrossCore.Mac.Pcl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cirrious.MvvmCross.Localisation\Cirrious.MvvmCross.Localization.Mac.Pcl.csproj">
+      <Project>{D59324C2-D48F-2AD0-A3B9-353A93425AB7}</Project>
+      <Name>Cirrious.MvvmCross.Localization.Mac.Pcl</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="WeakSubscription\" />
+    <Folder Include="ValueConverters\" />
   </ItemGroup>
 </Project>
