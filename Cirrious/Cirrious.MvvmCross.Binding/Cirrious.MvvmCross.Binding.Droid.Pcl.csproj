@@ -11,6 +11,7 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
+    <TargetFrameworkVersion>v2.3</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -126,7 +127,6 @@
     <Compile Include="Binders\IMvxBinder.cs" />
     <Compile Include="Bindings\IMvxBinding.cs" />
     <Compile Include="Bindings\IMvxUpdateableBinding.cs" />
-    <Compile Include="Binders\MvxBindingDescription.cs" />
     <Compile Include="MvxBindingMode.cs" />
     <Compile Include="MvxBindingRequest.cs" />
     <Compile Include="MvxBindingBuilder.cs" />
@@ -146,6 +146,58 @@
     <Compile Include="Binders\IMvxAutoValueConverters.cs" />
     <Compile Include="Binders\MvxAutoValueConverters.cs" />
     <Compile Include="Bindings\Target\Construction\MvxTargetBindingFactoryRegistryExtensions.cs" />
+    <Compile Include="Combiners\IMvxValueCombiner.cs" />
+    <Compile Include="Combiners\IMvxValueCombinerLookup.cs" />
+    <Compile Include="Combiners\IMvxValueCombinerRegistry.cs" />
+    <Compile Include="Combiners\IMvxValueCombinerRegistryFiller.cs" />
+    <Compile Include="Combiners\MvxAddValueCombiner.cs" />
+    <Compile Include="Combiners\MvxDivideValueCombiner.cs" />
+    <Compile Include="Combiners\MvxFormatValueCombiner.cs" />
+    <Compile Include="Combiners\MvxIfValueCombiner.cs" />
+    <Compile Include="Combiners\MvxModulusValueCombiner.cs" />
+    <Compile Include="Combiners\MvxMultiplyValueCombiner.cs" />
+    <Compile Include="Combiners\MvxNumericOnlyValueCombiner.cs" />
+    <Compile Include="Combiners\MvxObjectAsStringPairwiseValueCombiner.cs" />
+    <Compile Include="Combiners\MvxPairwiseValueCombiner.cs" />
+    <Compile Include="Combiners\MvxSingleValueCombiner.cs" />
+    <Compile Include="Combiners\MvxSubtractValueCombiner.cs" />
+    <Compile Include="Combiners\MvxValueCombiner.cs" />
+    <Compile Include="Combiners\MvxValueCombinerRegistry.cs" />
+    <Compile Include="Combiners\MvxValueCombinerRegistryFiller.cs" />
+    <Compile Include="Combiners\MvxValueConverterValueCombiner.cs" />
+    <Compile Include="Combiners\VeryExperimental\MvxBooleanValueCombiner.cs" />
+    <Compile Include="Combiners\VeryExperimental\MvxEqualToValueCombiner.cs" />
+    <Compile Include="Combiners\VeryExperimental\MvxGreaterThanOrEqualToValueCombiner.cs" />
+    <Compile Include="Combiners\VeryExperimental\MvxGreaterThanValueCombiner.cs" />
+    <Compile Include="Combiners\VeryExperimental\MvxLessThanOrEqualToValueCombiner.cs" />
+    <Compile Include="Combiners\VeryExperimental\MvxLessThanValueCombiner.cs" />
+    <Compile Include="Combiners\VeryExperimental\MvxNotEqualToPairwiseValueCombiner.cs" />
+    <Compile Include="BindingContext\MvxBindExtensions.cs" />
+    <Compile Include="BindingContext\MvxInlineBindingTarget.cs" />
+    <Compile Include="Bindings\SourceSteps\IMvxSourceStep.cs" />
+    <Compile Include="Bindings\SourceSteps\IMvxSourceStepFactory.cs" />
+    <Compile Include="Bindings\SourceSteps\IMvxSourceStepFactoryRegistry.cs" />
+    <Compile Include="Bindings\SourceSteps\MvxCombinerSourceStep.cs" />
+    <Compile Include="Bindings\SourceSteps\MvxCombinerSourceStepDescription.cs" />
+    <Compile Include="Bindings\SourceSteps\MvxCombinerSourceStepFactory.cs" />
+    <Compile Include="Bindings\SourceSteps\MvxLiteralSourceStep.cs" />
+    <Compile Include="Bindings\SourceSteps\MvxLiteralSourceStepDescription.cs" />
+    <Compile Include="Bindings\SourceSteps\MvxLiteralSourceStepFactory.cs" />
+    <Compile Include="Bindings\SourceSteps\MvxPathSourceStep.cs" />
+    <Compile Include="Bindings\SourceSteps\MvxPathSourceStepDescription.cs" />
+    <Compile Include="Bindings\SourceSteps\MvxPathSourceStepFactory.cs" />
+    <Compile Include="Bindings\SourceSteps\MvxSourceStep.cs" />
+    <Compile Include="Bindings\SourceSteps\MvxSourceStepDescription.cs" />
+    <Compile Include="Bindings\SourceSteps\MvxSourceStepFactory.cs" />
+    <Compile Include="Bindings\SourceSteps\MvxTypedSourceStepFactory.cs" />
+    <Compile Include="Parse\Binding\Tibet\MvxTibetBindingParser.cs" />
+    <Compile Include="Binders\MvxNamedInstanceRegistry.cs" />
+    <Compile Include="Binders\MvxNamedInstanceRegistryFiller.cs" />
+    <Compile Include="Bindings\Source\Construction\IMvxSourceBindingFactoryExtension.cs" />
+    <Compile Include="Bindings\Source\Construction\IMvxSourceBindingFactoryExtensionHost.cs" />
+    <Compile Include="Bindings\Source\Construction\MvxPropertySourceBindingFactoryExtension.cs" />
+    <Compile Include="Bindings\MvxBindingDescription.cs" />
+    <Compile Include="Bindings\Source\MvxMissingSourceBinding.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
@@ -162,7 +214,7 @@
       <Project>{CFF6F11A-3C3B-23EE-A24C-2ED4AAFF3ADB}</Project>
       <Name>Cirrious.CrossCore.Droid.Pcl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cirrious.MvvmCross.Localisation\Cirrious.MvvmCross.Localization.Droid.Pcl.csproj">
+    <ProjectReference Include="..\Cirrious.MvvmCross.Localization\Cirrious.MvvmCross.Localization.Droid.Pcl.csproj">
       <Project>{D89444C1-D48F-2AD0-A3B9-353A93425AB7}</Project>
       <Name>Cirrious.MvvmCross.Localization.Droid.Pcl</Name>
     </ProjectReference>
@@ -170,5 +222,8 @@
   <ItemGroup>
     <Folder Include="WeakSubscription\" />
     <Folder Include="ValueConverters\" />
+    <Folder Include="Combiners\" />
+    <Folder Include="Bindings\SourceSteps\" />
+    <Folder Include="Parse\Binding\Tibet\" />
   </ItemGroup>
 </Project>

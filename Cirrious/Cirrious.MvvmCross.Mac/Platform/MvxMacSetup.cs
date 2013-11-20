@@ -7,17 +7,20 @@
 // </copyright>
 // 
 // Project Lead - Stuart Lodge, Cirrious. http://www.cirrious.com
-using Cirrious.CrossCore.Plugins;
-using Cirrious.MvvmCross.Binding;
-using Cirrious.MvvmCross.Binding.Bindings.Target.Construction;
-using System.Reflection;
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Platform;
+using Cirrious.MvvmCross.Binding.BindingContext;
+using Cirrious.MvvmCross.Binding.Mac;
+
 
 #endregion
 
 using System;
+using System.Reflection;
 using System.Collections.Generic;
+using Cirrious.CrossCore.Plugins;
+using Cirrious.MvvmCross.Binding;
+using Cirrious.MvvmCross.Binding.Bindings.Target.Construction;
+using Cirrious.CrossCore;
+using Cirrious.CrossCore.Platform;
 using Cirrious.CrossCore.Converters;
 using Cirrious.MvvmCross.Platform;
 using Cirrious.MvvmCross.Mac.Interfaces;
@@ -94,11 +97,8 @@ namespace Cirrious.MvvmCross.Mac.Platform
 		
 		protected virtual MvxBindingBuilder CreateBindingBuilder()
 		{
-			var bindingBuilder = new MvxBindingBuilder();
+			var bindingBuilder = new MvxMacBindingBuilder(FillTargetFactories, FillValueConverters, FillBindingNames);
 			return bindingBuilder;
-
-//			var bindingBuilder = new MvxTouchBindingBuilder(FillTargetFactories, FillValueConverters, FillBindingNames);
-//			return bindingBuilder;
 		}
 		
 		protected virtual void FillValueConverters(IMvxValueConverterRegistry registry)
@@ -121,6 +121,11 @@ namespace Cirrious.MvvmCross.Mac.Platform
 				toReturn.AddRange(GetViewAssemblies());
 				return toReturn;
 			}
+		}
+
+		protected virtual void FillBindingNames (IMvxBindingNameRegistry registry)
+		{
+
 		}
 		
 		protected virtual void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)

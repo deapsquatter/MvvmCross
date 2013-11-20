@@ -17,8 +17,7 @@ namespace Cirrious.MvvmCross.Droid.Views
 {
     public class MvxAndroidViewsContainer
         : MvxViewsContainer
-          , IMvxAndroidViewModelLoader
-          , IMvxAndroidViewModelRequestTranslator
+         , IMvxAndroidViewsContainer
     {
         private const string ExtrasKey = "MvxLaunchData";
         private const string SubViewModelKey = "MvxSubViewModelKey";
@@ -34,38 +33,43 @@ namespace Cirrious.MvvmCross.Droid.Views
 
         public virtual IMvxViewModel Load(Intent intent, IMvxBundle savedState)
         {
-            return Load(intent, null);
+            return Load(intent, null, null);
         }
 
         public virtual IMvxViewModel Load(Intent intent, IMvxBundle savedState, Type viewModelTypeHint)
         {
-            if (intent == null)
-            {
-                MvxTrace.Error( "Null Intent seen when creating ViewModel");
-                return null;
-            }
+			if (intent == null)
+			{
+				MvxTrace.Error( "Null Intent seen when creating ViewModel");
+				return null;
+			}
 
-            if (intent.Action == Intent.ActionMain)
-            {
-                MvxTrace.Trace("Creating ViewModel for ActionMain");
-                return DirectLoad(savedState, viewModelTypeHint);
-            }
+			if (intent.Action == Intent.ActionMain)
+			{
+				MvxTrace.Trace("Creating ViewModel for ActionMain");
+				return DirectLoad(savedState, viewModelTypeHint);
+			}
 
-            if (intent.Extras == null)
-            {
-                MvxTrace.Trace("Null Extras seen on Intent when creating ViewModel - have you tried to navigate to an MvvmCross View directly? Will try direct load");
-                return DirectLoad(savedState, viewModelTypeHint);
-            }
+			if (intent.Extras == null)
+			{
+				MvxTrace.Trace("Null Extras seen on Intent when creating ViewModel - have you tried to navigate to an MvvmCross View directly? Will try direct load");
+				return DirectLoad(savedState, viewModelTypeHint);
+			}
 
-            IMvxViewModel mvxViewModel;
-            if (TryGetEmbeddedViewModel(intent, out mvxViewModel))
-            {
-                MvxTrace.Trace("Embedded ViewModel used");
-                return mvxViewModel;
-            }
+			IMvxViewModel mvxViewModel;
+			if (TryGetEmbeddedViewModel(intent, out mvxViewModel))
+			{
+				MvxTrace.Trace("Embedded ViewModel used");
+				return mvxViewModel;
+			}
 
-            MvxTrace.Trace("Loading new ViewModel from Intent with Extras");
-            return CreateViewModelFromIntent(intent, savedState);
+			MvxTrace.Trace("Attempting to load new ViewModel from Intent with Extras");
+			var toReturn = CreateViewModelFromIntent(intent, savedState);
+			if (toReturn != null)
+				return toReturn;
+
+			MvxTrace.Trace("ViewModel not loaded from Extras - wil try DirectLoad");
+			return DirectLoad(savedState, viewModelTypeHint);
         }
 
         protected virtual IMvxViewModel DirectLoad(IMvxBundle savedState, Type viewModelTypeHint)

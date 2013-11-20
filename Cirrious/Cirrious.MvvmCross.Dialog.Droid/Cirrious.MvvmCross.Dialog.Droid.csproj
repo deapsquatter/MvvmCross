@@ -14,6 +14,7 @@
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <TargetFrameworkVersion>v2.3</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -44,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MvxAndroidDialogSetup.cs" />
+    <Compile Include="Views\EventSourceLinearDialogActivity.cs" />
+    <Compile Include="Views\MvxLinearDialogActivity.cs" />
     <Compile Include="Views\IMvxDialogActivityView.cs" />
     <Compile Include="Views\EventSourceDialogActivity.cs" />
     <Compile Include="Views\MvxDialogActivity.cs" />

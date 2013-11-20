@@ -25,6 +25,7 @@ namespace Cirrious.MvvmCross.Mac.Views.Presenters
     {
         private readonly NSApplicationDelegate _applicationDelegate;
 		private readonly NSWindow _window;
+		private IMvxView _view;
 
 		protected NSWindow Window{
 			get{
@@ -53,9 +54,9 @@ namespace Cirrious.MvvmCross.Mac.Views.Presenters
         {
 			try
 			{
-				var view = GetView(request);
+				_view = GetView(request);
 
-				var viewController = view as NSViewController;
+				var viewController = _view as NSViewController;
 				if (viewController == null)
 					throw new MvxException("Passed in IMvxTouchView is not a NSViewController");
 

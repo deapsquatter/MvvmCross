@@ -123,6 +123,7 @@
     <Compile Include="Core\MvxPropertyNameExtensionMethods.cs" />
     <Compile Include="IoC\IMvxTypeCache.cs" />
     <Compile Include="IoC\MvxTypeCache.cs" />
+    <Compile Include="Platform\IMvxNamedInstanceRegistry.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

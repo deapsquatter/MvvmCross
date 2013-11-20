@@ -45,7 +45,7 @@ namespace Cirrious.MvvmCross.Plugins.Location.Touch
 				if (CLLocationManager.HeadingAvailable)
 					_locationManager.StartUpdatingHeading();
 
-				_locationManager.StartUpdatingLocation();
+				_locationManager.StartMonitoringSignificantLocationChanges ();
 			}
         }
 
@@ -136,12 +136,12 @@ namespace Cirrious.MvvmCross.Plugins.Location.Touch
 
             public override void Failed(CLLocationManager manager, NSError error)
             {
-                // ignored for now
+				_owner.SendError (MvxLocationErrorCode.Timeout);
             }
 
             public override void MonitoringFailed(CLLocationManager manager, CLRegion region, NSError error)
             {
-                // ignored for now
+				_owner.SendError (MvxLocationErrorCode.Timeout);
             }
         }
 

@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cirrious.MvvmCross.Plugins.Location\Cirrious.MvvmCross.Plugins.Location.csproj">
-      <Project>{8B0A9E43-E90F-455C-AE56-45BC70429167}</Project>
+      <Project>{8B0A9E11-E40F-455C-AE56-45BC70429167}</Project>
       <Name>Cirrious.MvvmCross.Plugins.Location</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\CrossCore\Cirrious.CrossCore\Cirrious.CrossCore.csproj">

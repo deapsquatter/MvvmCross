@@ -38,13 +38,6 @@
     <Reference Include="System.Net" />
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="MvxLanguageConverter.cs" />
-    <Compile Include="IMvxLanguageBinder.cs" />
-    <Compile Include="IMvxTextProvider.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MvxLanguageBinder.cs" />
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
