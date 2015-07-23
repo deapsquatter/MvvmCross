@@ -11,25 +11,25 @@ using MonoTouch.UIKit;
 
 namespace Cirrious.MvvmCross.Touch.Views.Presenters
 {
-    public class MvxBaseTouchViewPresenter
-        : IMvxTouchViewPresenter
-    {
-        public virtual void Show(MvxViewModelRequest request)
-        {
-        }
+	public class MvxBaseTouchViewPresenter
+		: IMvxTouchViewPresenter
+	{
+		public virtual void Show(MvxViewModelRequest request)
+		{
+		}
 
-        public virtual void ChangePresentation(MvxPresentationHint hint)
-        {
-            MvxTrace.Warning("Hint ignored {0}", hint.GetType().Name);
-        }
+		public virtual void ChangePresentation(MvxPresentationHint hint)
+		{
+			MvxTrace.Warning("Hint ignored {0}", hint.GetType().Name);
+		}
 
-        public virtual bool PresentModalViewController(UIViewController viewController, bool animated)
-        {
-            return false;
-        }
+		public virtual bool PresentModalViewController(UIViewController viewController, bool animated)
+		{
+			return false;
+		}
 
-        public virtual void NativeModalViewControllerDisappearedOnItsOwn()
-        {
-        }
-    }
+		public virtual void NativeModalViewControllerDisappearedOnItsOwn()
+		{
+		}
+	}
 }

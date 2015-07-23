@@ -13,149 +13,142 @@ using MonoTouch.UIKit;
 
 namespace Cirrious.MvvmCross.Touch.Views.Presenters
 {
-    public class MvxTouchViewPresenter
-        : MvxBaseTouchViewPresenter
-    {
-        private readonly UIApplicationDelegate _applicationDelegate;
-        private readonly UIWindow _window;
+	public class MvxTouchViewPresenter
+		: MvxBaseTouchViewPresenter
+	{
+		private readonly UIApplicationDelegate _applicationDelegate;
+		private readonly UIWindow _window;
 
-        private UINavigationController _masterNavigationController;
+		public virtual UINavigationController MasterNavigationController
+		{
+			get; protected set;
+		}
 
-        public virtual UINavigationController MasterNavigationController
-        {
-            get { return _masterNavigationController; }
-        }
+		protected virtual UIApplicationDelegate ApplicationDelegate
+		{
+			get { return _applicationDelegate; }
+		}
 
-        protected virtual UIWindow Window
-        {
-            get { return _window; }
-        }
+		protected virtual UIWindow Window
+		{
+			get { return _window; }
+		}
 
-        public MvxTouchViewPresenter(UIApplicationDelegate applicationDelegate, UIWindow window)
-        {
-            _applicationDelegate = applicationDelegate;
-            _window = window;
-        }
+		public MvxTouchViewPresenter(UIApplicationDelegate applicationDelegate, UIWindow window)
+		{
+			_applicationDelegate = applicationDelegate;
+			_window = window;
+		}
 
-        public override void Show(MvxViewModelRequest request)
-        {
-            var view = this.CreateViewControllerFor(request);
+		public override void Show(MvxViewModelRequest request)
+		{
+			var view = this.CreateViewControllerFor(request);
 
-#warning Need to reinsert ClearTop type functionality here
-            //if (request.ClearTop)
-            //    ClearBackStack();
+			#warning Need to reinsert ClearTop type functionality here
+			//if (request.ClearTop)
+			//    ClearBackStack();
 
-            Show(view);
-        }
+			Show(view);
+		}
 
-        public override void ChangePresentation(MvxPresentationHint hint)
-        {
-            if (hint is MvxClosePresentationHint)
-            {
-                Close((hint as MvxClosePresentationHint).ViewModelToClose);
-                return;
-            }
+		public override void ChangePresentation(MvxPresentationHint hint)
+		{
+			if (hint is MvxClosePresentationHint)
+			{
+				Close((hint as MvxClosePresentationHint).ViewModelToClose);
+				return;
+			}
 
-            base.ChangePresentation(hint);
-        }
+			base.ChangePresentation(hint);
+		}
 
-        public virtual void Show(IMvxTouchView view)
-        {
-            var viewController = view as UIViewController;
-            if (viewController == null)
-                throw new MvxException("Passed in IMvxTouchView is not a UIViewController");
+		public virtual void Show(IMvxTouchView view)
+		{
+			var viewController = view as UIViewController;
+			if (viewController == null)
+				throw new MvxException("Passed in IMvxTouchView is not a UIViewController");
 
-            if (MasterNavigationController == null)
-                ShowFirstView(viewController);
-            else
-                MasterNavigationController.PushViewController(viewController, true /*animated*/);
-        }
+			if (MasterNavigationController == null)
+				ShowFirstView(viewController);
+			else
+				MasterNavigationController.PushViewController(viewController, true /*animated*/);
+		}
 
 		public virtual void CloseModalViewController()
-        {
-            _masterNavigationController.PopViewControllerAnimated(true);
-        }
+		{
+			MasterNavigationController.PopViewControllerAnimated(true);
+		}
 
 		public virtual void Close(IMvxViewModel toClose)
-        {
-            var topViewController = _masterNavigationController.TopViewController;
+		{
+			var topViewController = MasterNavigationController.TopViewController;
 
-            if (topViewController == null)
-            {
-                MvxTrace.Warning( "Don't know how to close this viewmodel - no topmost");
-                return;
-            }
+			if (topViewController == null)
+			{
+				MvxTrace.Warning( "Don't know how to close this viewmodel - no topmost");
+				return;
+			}
 
-            var topView = topViewController as IMvxTouchView;
-            if (topView == null)
-            {
-                MvxTrace.Warning(
-                               "Don't know how to close this viewmodel - topmost is not a touchview");
-                return;
-            }
+			var topView = topViewController as IMvxTouchView;
+			if (topView == null)
+			{
+				MvxTrace.Warning(
+					"Don't know how to close this viewmodel - topmost is not a touchview");
+				return;
+			}
 
-            var viewModel = topView.ReflectionGetViewModel();
-            if (viewModel != toClose)
-            {
-                MvxTrace.Warning(
-                               "Don't know how to close this viewmodel - topmost view does not present this viewmodel");
-                return;
-            }
+			var viewModel = topView.ReflectionGetViewModel();
+			if (viewModel != toClose)
+			{
+				MvxTrace.Warning(
+					"Don't know how to close this viewmodel - topmost view does not present this viewmodel");
+				return;
+			}
 
-            _masterNavigationController.PopViewControllerAnimated(true);
-        }
+			MasterNavigationController.PopViewControllerAnimated(true);
+		}
 
-#warning Unused
-		public virtual void ClearBackStack()
-        {
-            if (_masterNavigationController == null)
-                return;
+		public override bool PresentModalViewController(UIViewController viewController, bool animated)
+		{
+			CurrentTopViewController.PresentViewController(viewController, animated, () => { });
+			return true;
+		}
 
-            _masterNavigationController.PopToRootViewController(true);
-            _masterNavigationController = null;
-        }
+		public override void NativeModalViewControllerDisappearedOnItsOwn()
+		{
+			// ignored
+		}
 
-        public override bool PresentModalViewController(UIViewController viewController, bool animated)
-        {
-            CurrentTopViewController.PresentViewController(viewController, animated, () => { });
-            return true;
-        }
+		protected virtual void ShowFirstView(UIViewController viewController)
+		{
+			foreach (var view in _window.Subviews)
+				view.RemoveFromSuperview();
 
-        public override void NativeModalViewControllerDisappearedOnItsOwn()
-        {
-            // ignored
-        }
+			MasterNavigationController = CreateNavigationController(viewController);
 
-        protected virtual void ShowFirstView(UIViewController viewController)
-        {
-            foreach (var view in _window.Subviews)
-                view.RemoveFromSuperview();
+			OnMasterNavigationControllerCreated();
 
-            _masterNavigationController = CreateNavigationController(viewController);
+			SetWindowRootViewController(MasterNavigationController);
+		}
 
-            OnMasterNavigationControllerCreated();
+		protected virtual void SetWindowRootViewController(UIViewController controller)
+		{
+			_window.AddSubview(controller.View);
+			_window.RootViewController = controller;
+		}
 
-            SetWindowRootViewController(_masterNavigationController);
-        }
+		protected virtual void OnMasterNavigationControllerCreated()
+		{
+		}
 
-        protected virtual void SetWindowRootViewController(UIViewController controller)
-        {
-            _window.AddSubview(controller.View);
-            _window.RootViewController = controller;
-        }
+		protected virtual UINavigationController CreateNavigationController(UIViewController viewController)
+		{
+			return new UINavigationController(viewController);
+		}
 
-        protected virtual void OnMasterNavigationControllerCreated()
-        {
-        }
-
-        protected virtual UINavigationController CreateNavigationController(UIViewController viewController)
-        {
-            return new UINavigationController(viewController);
-        }
-
-        protected virtual UIViewController CurrentTopViewController
-        {
-            get { return _masterNavigationController.TopViewController; }
-        }
-    }
+		protected virtual UIViewController CurrentTopViewController
+		{
+			get { return MasterNavigationController.TopViewController; }
+		}
+	}
 }

@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Cirrious.CrossCore</RootNamespace>
     <AssemblyName>Cirrious.CrossCore</AssemblyName>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>

@@ -23,7 +23,7 @@ namespace Cirrious.MvvmCross.Mac.Views.Presenters
     public class MvxMacViewPresenter 
         : MvxBaseViewPresenter
     {
-        private readonly NSApplicationDelegate _applicationDelegate;
+    private readonly NSApplicationDelegate _applicationDelegate;
 		private readonly NSWindow _window;
 		private IMvxView _view;
 
@@ -33,11 +33,11 @@ namespace Cirrious.MvvmCross.Mac.Views.Presenters
 			}
 		}
         
-        public MvxMacViewPresenter (NSApplicationDelegate applicationDelegate, NSWindow window)
-        {
-            _applicationDelegate = applicationDelegate;
-			_window = window;
-        } 
+    public MvxMacViewPresenter (NSApplicationDelegate applicationDelegate, NSWindow window)
+    {
+        _applicationDelegate = applicationDelegate;
+	      _window = window;
+    } 
 
 		protected virtual void PlaceView(MvxViewModelRequest request, NSViewController viewController)
 		{
